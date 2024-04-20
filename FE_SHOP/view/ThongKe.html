@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê Đơn Hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./view-css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+</head>
+<body>
+    <header>
+        <div class="content">
+            <div class="logo">
+                <img src="https://deer6.vn/wp-content/uploads/2021/11/logo-black.png" alt="">
+            </div>
+            <div class="menubar">
+                <ul class="main-menu">
+                    <li><a href="../view/home.html">Home</a></li>
+                    <li><a href="../view/accountManager.html">Accout</a></li>
+                    <li><a href="../view/categorymanager.html">Category</a></li>
+                    <li><a href="../view/OrderManager.html">Oders</a></li>
+                    <li><a href="../view/newmanager.html">News</a></li>
+                    <li><a href="../view/Feedbackmanager.html">FeebackManager</a></li>
+                    <li><a href="ThongKe.html">Thống kê doanh thu</a></li>
+                </ul>
+            </div>
+            <div class="funtion">
+                <ul class="funtion-list">
+                    <li></li>
+                    <li></li>
+                    <li class="heart">
+                    </li>
+                    <li class="cart">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1 class="text-center mb-5">Thống kê Đơn Hàng</h1>
+        <form id="filterForm" class="mt-2">
+            Từ ngày:
+            <i class="fa-regular fa-calendar"></i>
+            <input  id="beginDate" type="date" placeholder="Ngày đến" name="ngayden">
+            Đến ngày:
+            <i class="fa-solid fa-calendar"></i>
+            <input id="endDate" type="date" placeholder="Ngày đi" name="ngaydi">
+            <button type="submit" class="bt-homnay btn btn-secondary m-3">Lọc</button>
+            <button id="allOrdersBtn" type="button" class="bt-all-orders btn btn-primary m-3">Tất cả</button>
+            <button id="ExportExcel" type="button" class="btn btn-success">Xuất Excel</button>
+            <div class="input-group mb-3">
+                <input class="form-control form-control-sm" id="recipientEmail" type="email" placeholder="Nhập địa chỉ email người nhận" aria-label="Recipient's email" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button onclick="sendMail()" id="sendEmailBtn" type="button" class="btn btn-primary">Gửi Email</button>
+                </div>
+              </div>
+              
+        </form>
+        <div id="orderData">
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        const admin = localStorage.getItem('admin');
+            if(!admin){
+                alert("bạn không có quyền truy cập trang này ");
+                window.location.href="home.html";
+            }
+            const token = localStorage.getItem('jwtToken');
+            if(!token){
+                window.location.href='../../web api nam 3 ki2/view/login.html'
+            }
+        flatpickr("#beginDate", {});
+        flatpickr("#endDate", {});
+
+        document.getElementById("filterForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+
+            var beginDate = document.getElementById("beginDate").value;
+            var endDate = document.getElementById("endDate").value;
+            // Gửi yêu cầu fetch đến API
+            fetch(`http://localhost:8080/api-orders/satistic?begin=${beginDate}&end=${endDate}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+            let totalOrders = data.length;
+            let totalMoneyy = 0;
+            data.forEach(order => {
+                totalMoneyy += order.totalMoney;
+            });
+            console.log(beginDate)
+            let summary = `<div class="row m-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tổng Số Đơn Hàng</h5>
+                        <p class="card-text">${totalOrders}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tổng Doanh Thu</h5>
+                        <p class="card-text">${totalMoneyy}</p>
+                    </div>
+                </div>
+            </div>
+        </div> `;
+            summary += `<h1>Thống kê doanh thu từ ngày ${beginDate} đến ngày ${endDate}</h1>`;
+            console.log(totalMoneyy)
+            console.log(totalOrders)
+            // Xây dựng bảng dữ liệu
+            let table = '<table class="table table-striped mt-5">';
+            table += `<tr>
+                        <th scope="col">ID Đơn Hàng</th>
+                        <th scope="col">Ngày Đặt Hàng</th>
+                        <th scope="col">Tổng Tiền</th>
+                        <th scope="col">Trạng Thái</th>
+                    </tr>`;
+            data.forEach(order => {
+                table += `<tr>
+                        <th scope="row">${order.orderId}</th>
+                        <td>${order.orderDate}</td>
+                        <td>${order.totalMoney}</td>
+                        <td>${order.status}</td>
+                    </tr>`;
+            });
+            table += '</table>';
+
+            // Đưa thông tin tổng hợp và bảng dữ liệu vào div có id là "orderData"
+            document.getElementById('orderData').innerHTML = summary + table;
+                })
+                .catch(error => {
+                    console.error('Ngày bạn chọn ko có dữ liệu trả về', error);
+                    displayError("<h1>Ngày bạn chọn ko có dữ liệu trả về</h1>");
+                });
+        });
+
+        
+
+        function displayError(message) {
+            var statisticsDiv = document.getElementById("orderData");
+            statisticsDiv.innerHTML = `<p>${message}</p>`;
+        }
+        document.getElementById("ExportExcel").addEventListener("click", function() {
+           // Tạo một yêu cầu GET đến đường dẫn '/excel' của backend
+            fetch('http://localhost:8080/excel', {
+                method: 'GET'
+            })
+            .then(response => {
+                // Kiểm tra xem phản hồi có phải là file Excel không
+                if (response.headers.get('content-type').includes('application/octet-stream')) {
+                // Chuyển đổi phản hồi thành blob
+                return response.blob();
+                } else {
+                // Nếu không phải là file Excel, xử lý lỗi
+                throw new Error('Invalid response: The response is not an Excel file.');
+                }
+            })
+            .then(blob => {
+                // Tạo một đường link ẩn để tải file
+                const url = window.URL.createObjectURL(new Blob([blob]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'thongke.xls'); // Đặt tên file bạn muốn tải xuống
+                // Thêm đường link ẩn vào DOM và kích hoạt sự kiện click để tải file
+                document.body.appendChild(link);
+                link.click();
+                // Xóa đường link ẩn sau khi đã tải xong
+                link.parentNode.removeChild(link);
+            })
+            .catch(error => console.error('Error downloading Excel file:', error));});
+
+        document.getElementById("allOrdersBtn").addEventListener("click", function() {
+            fetch('http://localhost:8080/api-orders/admin')
+            .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+            let totalOrders = data.length;
+            let totalMoneyy = 0;
+            data.forEach(order => {
+                totalMoneyy += order.totalMoney;
+            });
+            let summary = `<div class="row m-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tổng Số Đơn Hàng</h5>
+                        <p class="card-text">${totalOrders}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tổng Doanh Thu</h5>
+                        <p class="card-text">${totalMoneyy}</p>
+                    </div>
+                </div>
+            </div>
+        </div> `;
+            summary += `<h1>Thống kê tất cả doanh thu</h1>`;
+            // Xây dựng bảng dữ liệu
+            let table = '<table class="table table-striped mt-5">';
+            table += `<tr>
+                        <th scope="col">ID Đơn Hàng</th>
+                        <th scope="col">Ngày Đặt Hàng</th>
+                        <th scope="col">Tổng Tiền</th>
+                        <th scope="col">Trạng Thái</th>
+                    </tr>`;
+            data.forEach(order => {
+                table += `<tr>
+                        <th scope="row">${order.orderId}</th>
+                        <td>${order.orderDate}</td>
+                        <td>${order.totalMoney}</td>
+                        <td>${order.status}</td>
+                    </tr>`;
+            });
+            table += '</table>';
+
+            // Đưa thông tin tổng hợp và bảng dữ liệu vào div có id là "orderData"
+            document.getElementById('orderData').innerHTML = summary + table;
+                })
+        .catch(error => console.error('Error fetching data:', error));
+        });
+        function sendMail(){
+            var recipientEmail = document.getElementById("recipientEmail").value;
+            
+            // Gửi yêu cầu fetch đến API để gửi email
+            fetch('http://localhost:8080/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "toEmail": recipientEmail,
+                    "subject": "Báo Cáo Doanh Thu",
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Email đã được gửi thành công!");
+                } else {
+                    alert("Đã xảy ra lỗi khi gửi email!");
+                }
+            })
+            .catch(error => {
+                console.error('Error sending email:', error);
+                alert("Đã xảy ra lỗi khi gửi email!");
+            });
+        }
+    </script>
+</body>
+</html>

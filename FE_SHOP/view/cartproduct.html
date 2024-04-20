@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng-UTT</title>
+    <link rel="stylesheet" href="./view-css/cartproduct.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        
+        <div class="content">
+            <div class="logo">
+                <img src="https://deer6.vn/wp-content/uploads/2021/11/logo-black.png" alt="">
+            </div>
+            <div class="menubar">
+                <ul class="main-menu">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="allproduct.html">All Products</a></li>
+                    <li><a href="../view/productofcategory.html?category=Tops" id="Tops">Tops</a></li>
+                    <li><a href="../view/productofcategory.html?category=Bottoms" id="Bottoms">Bottoms</a></li>
+                    <li><a href="../view/productofcategory.html?category=Jackets" id="Jackets">Jackets</a></li>
+                    <li><a href="feedback.html">feedback</a></li>
+                    <li><a href="news.html">News</a></li>
+                  
+                </ul>
+            </div>
+            <div class="funtion">
+                <ul class="funtion-list">
+                    <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                    <li><a href="./profiledetail.html"><i class="fa-regular fa-user"></i></a></li>
+                    <li class="heart"><a href="./cartproduct.html"><i class="fa-regular fa-heart"></i>
+                        <span class="heart-number">0</span></a>
+                    </li>
+                    <li class="cart"><a href="./cartproduct.html"><i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-number">0</span></a>
+                    </li>
+                      <!-- Thêm nút logout -->
+                <li><a href="login.html"><i class="fa-solid fa-sign-out"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="content">
+            <h1 class="title">Giỏ hàng</h1>
+            <div class="bill">
+                <table class="table-bill ">
+                    <tr >
+                        <th class="col-remove"></th>
+                        <th class="col-thumbnail"></th>
+                        <th class="col-product">Sản Phẩm</th>
+                        <th class="col-price">Giá</th>
+                        <th class="col-quantity">Số Lượng</th>
+                        <th class="col-estimate">Tạm Tính</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Bạn chưa thêm gì vào giỏ hàng</td>
+                    </tr>
+                  
+                </table>
+                <div class="total_money_cart">
+                    <h2>Cộng giỏ hàng</h2>
+                    <table class="table_total_money">
+                        <tr>
+                            <th>Tạm tính</th>
+                            <td class="estimate_total_money"> <span>0</span> &#8363</td>
+                        </tr>
+                        <tr>
+                            <th>Giao hàng</th>
+                            <td class="transport">
+                                <ul class="info_transport">
+                                    <li class="info_transport_item">Phí vận chuyển: 30.000 &#8363 </li>
+                                    <li class="info_transport_item">Vận chuyển đến CA.</li>
+                                    <li class="info_transport_item">Giao hàng hỏa tốc <i class="fa-solid fa-truck-fast"></i></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Tổng</th>
+                            <td class="total_money"> <span>0</span> &#8363</td>
+                        </tr>
+                    </table>
+
+                    <div class="check_out">
+                        <button class="btn_check_out">Tiến hành Thanh toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        function base64ToImageUrl(base64String) {
+            return 'data:image/jpeg;base64,' + base64String;
+        }
+
+        const jwtToken = localStorage.getItem('jwtToken');
+
+        if (jwtToken) {
+            const headers = {
+                'Authorization': `Bearer ${jwtToken}`
+            };
+            fetchCartData(headers);
+        } else {
+            console.error('JWT token not found in localStorage');
+        }
+
+        function fetchCartData(headers) {
+            fetch('http://localhost:8080/api-carts/getCart', {
+                method: 'GET',
+                headers: headers
+            })
+            .then(response => {
+                if (response.ok) {
+                        return response.json();
+                } else {
+                    throw new Error('Failed to fetch cart data');
+                }
+            })
+            .then(data => {
+                console.log(data)
+                loadData(data);
+                addEventListeners(data, headers);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function addEventListeners(data, headers) {
+            const minusButtons = document.querySelectorAll('.minus');
+            const plusButtons = document.querySelectorAll('.plus');
+            const closeButton = document.querySelectorAll('.close');
+            
+            minusButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const row = button.closest('tr');
+                    const productId = row.dataset.productId;
+                    const size = row.dataset.size;
+                    fetch(`http://localhost:8080/api-carts/decrease/${productId}?size=${size}`, {
+                        method: 'PUT',
+                        headers: headers
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to decrease quantity');
+                        }
+                        fetchCartData(headers);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+
+            plusButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const row = button.closest('tr');
+                    const productId = row.dataset.productId;
+                    const size = row.dataset.size;
+                    console.log(size)
+                    fetch(`http://localhost:8080/api-carts/increase/${productId}?size=${size}`, {
+                        method: 'PUT',
+                        headers: headers
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to increase quantity');
+                        }
+                        fetchCartData(headers);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+
+            closeButton.forEach(button => {
+                button.addEventListener('click', function () {
+                    const result = confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?");
+                    if (result) {
+                        const row = button.closest('tr');
+                        const itemId = row.dataset.itemId;
+                        deleteCartItem(itemId, headers);
+                    }
+                });
+            });
+        }
+
+        function loadData(data) {
+            let estimate_total_money = 0;
+            let table = document.querySelector(".table-bill");
+            table.innerHTML = `<tr >
+                        <th class="col-remove"></th>
+                        <th class="col-thumbnail"></th>
+                        <th class="col-product">Sản Phẩm</th>
+                        <th class="col-price">Giá</th>
+                        <th class="col-quantity">Số Lượng</th>
+                        <th class="col-estimate">Tạm Tính</th>
+                    </tr>`; // Clear existing rows
+            data.forEach((item) => {
+                estimate_total_money += (item.productId.price * item.quantity);
+                let size = item.size;
+
+                var tr = document.createElement("tr");
+                tr.dataset.productId = item.productId.id;
+                tr.dataset.size=item.size;
+                tr.dataset.itemId = item.id;
+                tr.innerHTML = `
+                    <td><button class="close"><i class="fa-solid fa-xmark"></i></button></td>
+                    <td><img src="${base64ToImageUrl(item.productId.img)}" alt=""></td>
+                    <td>${item.productId.title} - ${size}</td>
+                    <td>${fomartMoney(item.productId.price)} &#8363</td>
+                    <td>
+                        <div class="input-quantity">
+                            <input type="button" value="-" class="minus">
+                            <input class="inputnumber" type="number" value="${item.quantity}" step="1" size="2" max="10" min="0">
+                            <input type="button" value="+" class="plus">
+                        </div>
+                    </td>
+                    <td>${fomartMoney(parseInt(item.productId.price) * item.quantity)}&#8363</td>`;
+                table.appendChild(tr);
+            });
+
+            let estimate = document.querySelector(".total_money_cart .table_total_money td.estimate_total_money span");
+            let total = document.querySelector(".total_money_cart .table_total_money td.total_money span");
+
+            if (estimate_total_money >= 0) {
+                estimate.innerHTML = fomartMoney(estimate_total_money);
+                total.innerHTML = fomartMoney(estimate_total_money + 30000);
+            }
+        }
+
+        function deleteCartItem(itemId, headers) {
+            fetch(`http://localhost:8080/api-carts/remove/${itemId}`, {
+                method: 'DELETE',
+                headers: headers
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete item');
+                }
+                else{
+                    alert("Xóa thành công")
+                }
+                fetchCartData(headers);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        function fomartMoney(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function MoneytoInt(x) {
+            return parseInt(x.replaceAll(".", ""));
+        }
+        let btn_pay= document.querySelector(".container .content .bill .total_money_cart .check_out .btn_check_out");
+        btn_pay.onclick = ()=>{
+            window.location.assign("pay.html")
+        }
+
+    const headers = {
+        'Authorization': `Bearer ${jwtToken}`
+    };
+
+
+function getMunberCart() {
+    fetch('http://localhost:8080/api-carts/getCart', {
+        method: 'GET',
+        headers: headers
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Failed to fetch cart data');
+        }
+    })
+    .then(function(Response){
+      document.querySelector("header .content .funtion .funtion-list .cart span.cart-number").innerHTML=Response.length
+  })
+
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+getMunberCart()
+    </script>
+    <!-- <script src="../controller/cartproduct.js"></> -->
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+// Hàm để kiểm tra và làm mới access token khi hết hạn
+function checkAccessTokenValidity() {
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) {
+        // Không có refresh token, đăng xuất người dùng hoặc yêu cầu đăng nhập lại
+        // Có thể redirect người dùng đến trang đăng nhập ở đây
+        console.log("Không có refresh token, cần đăng nhập lại.");
+        return;
+    }
+
+    fetch('http://localhost:8080/refreshToken?refesh='+refreshToken)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to refresh access token');
+            }
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem('jwtToken', data.token);
+            localStorage.setItem('refreshToken', data.refreshToken);
+            console.log("Access token đã được làm mới.");
+        })
+        .catch(error => {
+            console.error('Lỗi khi làm mới access token:', error.message);
+            // Xử lý lỗi ở đây, có thể đăng xuất người dùng hoặc yêu cầu đăng nhập lại
+        });
+}
+
+// Kiểm tra và làm mới access token khi trang được tải
+checkAccessTokenValidity();

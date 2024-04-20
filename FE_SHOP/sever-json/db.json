@@ -1,0 +1,172 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "dinhha",
+      "fullname": "dinh quang ha",
+      "password": "123",
+      "address": "thanh liem",
+      "phonenumber": "123123"
+    },
+    {
+      "id": "2",
+      "username": "dinhha",
+      "fullname": "dinh quang ha",
+      "address": "Thanh Liem",
+      "phonenumber": "123123133123"
+    },
+    {
+      "id": "3",
+      "username": "dinhha",
+      "password": "123",
+      "fullname": "",
+      "address": "",
+      "phonenumber": ""
+    }
+  ],
+  "product": [
+    {
+      "id": "1",
+      "Title": "Bomber jacket cargo",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2023/01/cargo-1000x1000.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2023/01/bomber-den-1-1000x1000.jpg",
+      "category": "Ao",
+      "price": "395000"
+    },
+    {
+      "id": "2",
+      "Title": "Basic bomber jacket",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2023/01/bomber.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2023/01/bomber-den-1-1000x1000.jpg",
+      "category": "Ao",
+      "price": "225000"
+    },
+    {
+      "id": "3",
+      "Title": "Áo Hoodie zipper SAD",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2023/11/sad-zipper-1000x1000.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2023/11/hoodie-mat-sau-1000x1000.jpg",
+      "category": "Ao",
+      "price": "195000"
+    },
+    {
+      "id": "4",
+      "Title": "Áo Hoodie zipper Fomax",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2023/11/fomax-zipper-1000x1000.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2023/11/hoodie-mat-sau-1000x1000.jpg",
+      "category": "Ao",
+      "price": "200000"
+    },
+    {
+      "id": "5",
+      "Title": "Áo Hoodie full zip mác cao su FOMAX",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2023/11/cao-su-web-1000x1000.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2023/11/maccaosu-1000x1000.jpg",
+      "category": "Ao",
+      "price": "180000"
+    },
+    {
+      "id": "6",
+      "Title": "Basic bomber nỉ bông Fomax",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2024/02/bomberni3-1000x1000.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2024/02/bombernixam-1000x1000.jpg",
+      "category": "Ao",
+      "price": "240000"
+    },
+    {
+      "id": "7",
+      "Title": "Áo Hoodie F",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2023/11/hoodie-F-1000x1000.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2023/11/hoodie-mat-sau-1000x1000.jpg",
+      "category": "Ao",
+      "price": "185000"
+    },
+    {
+      "id": "8",
+      "Title": "Áo khoác da ADCE 8022",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2022/09/944_1-9.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2022/09/944_1-47.jpg",
+      "category": "Ao",
+      "price": "430000"
+    },
+    {
+      "id": "9",
+      "Title": "Varsity jacket nhung tăm L fomax nau",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2022/10/up4.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2022/10/lnau5-1000x1000.jpg",
+      "category": "Ao",
+      "price": "1000000"
+    },
+    {
+      "id": "10",
+      "Title": "Varsity jacket FS",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2022/10/up1.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2022/10/fs5-1000x1000.jpg",
+      "category": "Ao",
+      "price": "150000"
+    },
+    {
+      "id": "11",
+      "Title": "Varsity jacket K fomax",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2022/10/up5.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2022/10/k5-1000x1000.jpg",
+      "category": "Ao",
+      "price": "260000"
+    },
+    {
+      "id": "12",
+      "Title": "Sweater FREE 8023",
+      "firstimage": "https://deer6.vn/wp-content/uploads/2022/09/946_1-38.jpg",
+      "secondimage": "https://deer6.vn/wp-content/uploads/2022/09/946_1-46.jpg",
+      "category": "Ao",
+      "price": "250000"
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "title": "Sweater FREE 8023",
+      "thumbnail": "https://deer6.vn/wp-content/uploads/2022/09/946_1-38.jpg",
+      "price": "100000",
+      "quantity": "3",
+      "color": "white",
+      "size": "L"
+    },
+    {
+      "id": "9c78",
+      "title": "Áo Hoodie zipper Fomax",
+      "color": "while",
+      "size": "XL",
+      "quantity": "2",
+      "price": "240000 ",
+      "thumbnail": "https://deer6.vn/wp-content/uploads/2023/11/fomax-zipper-1000x1000.jpg"
+    },
+    {
+      "id": "9dac",
+      "title": "Basic bomber jacket",
+      "color": "while",
+      "size": "M",
+      "quantity": "3",
+      "price": 240000,
+      "thumbnail": "https://deer6.vn/wp-content/uploads/2023/01/bomber.jpg"
+    },
+    {
+      "id": "8f45",
+      "title": "Áo Hoodie full zip mác cao su FOMAX",
+      "color": "while",
+      "size": "XL",
+      "quantity": "2",
+      "price": 240000,
+      "thumbnail": "https://deer6.vn/wp-content/uploads/2023/11/cao-su-web-1000x1000.jpg"
+    },
+    {
+      "id": "5b31",
+      "title": "Áo khoác da ADCE 8022",
+      "color": "black",
+      "size": "L",
+      "quantity": "1",
+      "price": 430000,
+      "thumbnail": "https://deer6.vn/wp-content/uploads/2022/09/944_1-9.jpg"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./view-css/login.css">
+</head>
+<body>
+
+<div class="login">
+    <video autoplay loop muted >
+        <source src="https://videos.adidas.com/video/upload/if_w_gt_1920,w_1920/running_ss24_supernova_global_launch_hp_masthead_d_2ddca3b2e2.mp4">
+    </video>
+    <div class="form-login">
+        <h1>ACCOUNT LOGIN</h1>
+        <div class="form-content">
+            <form id="loginForm">
+                <div class="form-group">
+                    <input type="text" required id="username" spellcheck="false">
+                    <div class="lable-input"><label for="username">Username or Email</label></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" required id="password" spellcheck="false">
+                    <div class="lable-input"><label for="password">Enter Your Password</label></div>
+                </div>
+                <div class="form-group">
+                    <div class="input-remember"><input type="checkbox">
+                        <label>Remember Me</label>
+                    </div>
+                    <label class="forgot">Forgot Password?</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit">LOG IN</button>
+                </div>
+                <div id="loginError" style="display: none; color: red;">Invalid username or password</div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../controller/login.js"></script>
+</body>
+</html>

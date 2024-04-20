@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER ACCOUNT</title>
+    <link rel="stylesheet" href="./view-css/register.css">
+</head>
+<body>
+
+<div class="login">
+    <video autoplay loop muted>
+        <source src="https://videos.adidas.com/video/upload/if_w_gt_1920,w_1920/running_ss24_supernova_global_launch_hp_masthead_d_2ddca3b2e2.mp4">
+    </video>
+    <div class="form-login">
+        <h1>REGISTER ACCOUNT</h1>
+        <div class="form-content">
+            <form id="register-form" action="/api/register" method="POST">
+                <div class="form-group">
+                    <input type="text" required id="username" name="username" spellcheck="false">
+                    <div class="lable-input"><label for="username">Username</label></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" required id="password" name="password" spellcheck="false">
+                    <div class="lable-input"><label for="password">Enter Your Password</label></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" required id="confirm-password" name="confirmPassword" spellcheck="false">
+                    <div class="lable-input"><label for="confirm-password">Confirm Password</label></div>
+                </div>
+                <div class="form-group">
+                    <input type="tel" required pattern="[0-9]{10}" id="phone" name="phone" spellcheck="false" placeholder="Enter Your Phone ">
+
+                    <div class="lable-input"><label for="phone">Enter Your Phone</label></div>
+                </div>
+                <div class="form-group">
+                    <div class="verify-phone">
+                        <input type="text" required id="verification-code" name="verificationCode" spellcheck="false" placeholder="Enter your code">
+                        <div id="status-msg"></div> <!-- Move here -->
+                        <button class="verify-btn" id="send-code-btn">Send-code</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">LOG UP</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../controller/sign-up.js"></script>
+</body>
+</html>

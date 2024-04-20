@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./view-css/productDetail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        
+        <div class="content">
+            <div class="logo">
+                <img src="https://deer6.vn/wp-content/uploads/2021/11/logo-black.png" alt="">
+            </div>
+            <div class="menubar">
+                <ul class="main-menu">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="allproduct.html">All Products</a></li>
+                    <li><a href="../view/productofcategory.html?category=Tops" id="Tops">Tops</a></li>
+                    <li><a href="../view/productofcategory.html?category=Bottoms" id="Bottoms">Bottoms</a></li>
+                    <li><a href="../view/productofcategory.html?category=Jackets" id="Jackets">Jackets</a></li>
+                    <li><a href="feedback.html">feedback</a></li>
+                    <li><a href="news.html">News</a></li>
+                  
+                </ul>
+            </div>
+            <div class="funtion">
+                <ul class="funtion-list">
+                    <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                    <li><a href="./profiledetail.html"><i class="fa-regular fa-user"></i></a></li>
+                    <li class="heart"><a href="./cartproduct.html"><i class="fa-regular fa-heart"></i>
+                        <span class="heart-number">0</span></a>
+                    </li>
+                    <li class="cart"><a href="./cartproduct.html"><i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-number">0</span></a>
+                    </li>
+                      <!-- Thêm nút logout -->
+                <li><a href="login.html"><i class="fa-solid fa-sign-out"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    
+    <div class="container">
+        <div class="container_wrap">
+            <div class="main-image">
+                <div class="thumbnail-left">
+                    <ul class="list-thumbnail-left">
+                        <li class="list-thumbnail-left-item active1"><img src="https://cdn.photoroom.com/v1/assets-cached.jpg?path=backgrounds_v3/white/Photoroom_white_background_extremely_fine_texture_only_white_co_d6a2d66a-dfe4-41fc-80fd-ec55764101bb.jpg" alt=""></li>
+                        <li class="list-thumbnail-left-item"><img src="https://cdn.photoroom.com/v1/assets-cached.jpg?path=backgrounds_v3/white/Photoroom_white_background_extremely_fine_texture_only_white_co_d6a2d66a-dfe4-41fc-80fd-ec55764101bb.jpg" alt=""></li>
+                        
+                    </ul>
+
+                </div>
+                <div class="image-center">
+                    <div class="image-viewport-item active"><img class="image-viewport-item-img" src="https://cdn.photoroom.com/v1/assets-cached.jpg?path=backgrounds_v3/white/Photoroom_white_background_extremely_fine_texture_only_white_co_d6a2d66a-dfe4-41fc-80fd-ec55764101bb.jpg" alt="">
+                    </div>
+
+                    <div class="image-viewport-item">
+                        <img class="image-viewport-item-img" src="https://cdn.photoroom.com/v1/assets-cached.jpg?path=backgrounds_v3/white/Photoroom_white_background_extremely_fine_texture_only_white_co_d6a2d66a-dfe4-41fc-80fd-ec55764101bb.jpg" alt="">
+                    </div>
+
+                </div>
+            </div>
+            <div class="info-detail">
+                <div class="info-detail-title">
+                    <h1>Basic bomber nỉ bông Fomax</h1>
+                    <span></span><span> &#8363</span>
+                </div>
+                <div class="info-detail-option">
+                   
+                </div>
+                <img style="width: 100%;" src="https://ccauthentic.vn/uploads/products/1e9e0eb0ca6d48add8466c31417d9d57.jpg" alt="">
+                <span>Vui lòng chọn size</span>
+                <div class="sizes option-size" style="margin: 20px;">
+                    <label><input style="size: 30px;" class="option-size-item" type="radio" name="size" value="M"> Size M</label>
+                    <label><input class="option-size-item" type="radio" name="size" value="L"> Size L</label>
+                    <label><input class="option-size-item" type="radio" name="size" value="XL"> Size XL</label>
+                  </div>
+                  <div class="info-detail-function">
+                      <div class="add-cart">
+                          <button style="width: 100%;height: 50px;" onclick="addToCart()" class="btn-add-cart"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
+                      </div>
+                  </div>
+
+
+                <!-- <div class="info-detail-function">
+                    <div class="input-quantity">
+                        <input type="button" value="-" class="minus">
+                        <input class="inputnumber" type="number" value="1" step="1" size="2" max="10" min="0">
+                        <input type="button" value="+" class="plus">
+                    </div>
+                    <div class="add-cart">
+                        <button onclick="addToCart()" class="btn-add-cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    
+                </div>
+                <div class="buy">
+                    <button class="buy-now">
+                        Buy it now
+                    </button>
+                </div> -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="../controller/productDetail.js"></script>
+</body>
+</html>

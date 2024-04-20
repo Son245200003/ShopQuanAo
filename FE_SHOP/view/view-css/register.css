@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    padding :0;
+    margin: 0;
+    box-sizing:border-box;
+    font-family: "Roboto",sans-serif;
+}
+.login{
+    width: 100vw;
+    height: 100vh;
+    overflow-x :hidden;
+    overflow-y: hidden;
+    position: relative;
+}
+.login video{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+}
+.login .form-login{
+    position: absolute;
+    padding: 20px 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30%;
+    min-height: 50%;
+    background-color:rgba(255, 255, 255, 0.96);;
+    border-radius: 15px;
+    box-shadow: 13px 11px 90px 12px rgba(167,156,210,0.36);
+    
+}
+.login .form-login h1{
+    padding: 4px 0;
+    margin:20px 0 30px 0;
+    color: #4285F4;
+    font-size: 38px;
+    font-weight: 700;
+    user-select: none;
+}
+.login .form-login form .form-group{
+    position: relative;
+    margin-bottom: 30px;
+    height: 50px;
+}
+.login .form-login form .form-group input{
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 20px;
+    padding: 0 20px;
+}
+.login .form-login form .form-group .lable-input{
+    position:absolute;
+    display: inline-block;
+    color: rgba(130, 150, 222, 0.7);
+    padding: 0 20px;
+    top: 50%;
+    left: 0;
+    margin: 0 5px;
+    transform: translateY(-50%);
+    cursor: text;
+    transition: all 0.1s linear;
+}
+.login .form-login form .form-group .lable-input label{
+    cursor: text;
+    background-color: white;
+    user-select: none;
+    padding: 0 5px;
+}
+
+.login .form-login form .form-group input:focus + .lable-input,
+.login .form-login form .form-group input:valid + .lable-input{
+    transform: translate(-10px,-36px);
+    z-index: 100;    
+}
+.form-content .form-group .input-remember{
+    display: flex;
+    line-height: 50px;
+}
+.form-content .form-group .input-remember input {
+    width: 18px !important;
+    margin-right : 8px;
+    cursor: pointer;
+}
+.form-content .form-group .input-remember label
+{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.login .form-login form .form-group button{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color :#4285F4;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.form-content .form-group .verify-phone{
+    display: flex;
+    height: 100%;
+   
+}
+.form-content .form-group .verify-phone input::placeholder{
+    color: #4f81d1;
+    font-size: medium;
+}
+.form-content .form-group .verify-phone .verify-btn{
+   height: 100%; 
+   width: 40%;
+   margin-left: 5px;
+   font-size: 14px;
+   background-color: rgb(82, 82, 15);
+   cursor: pointer;
+}
