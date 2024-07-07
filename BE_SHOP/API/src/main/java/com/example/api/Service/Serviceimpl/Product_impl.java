@@ -4,6 +4,7 @@ import com.example.api.Entity.Category;
 import com.example.api.Entity.Product;
 import com.example.api.Reponsitory.Product_Reponsitory;
 import com.example.api.Service.Product_Service;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,8 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Optional;
 @Service
+@RequiredArgsConstructor
 public class Product_impl implements Product_Service {
-    @Autowired
+    private final
     Product_Reponsitory productReponsitory;
     @Override
     public Product createProduct(Product product)   {

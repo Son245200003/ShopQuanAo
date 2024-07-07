@@ -4,6 +4,7 @@ import com.example.api.Entity.Category;
 import com.example.api.Entity.Product;
 import com.example.api.Service.Serviceimpl.Category_impl;
 import com.example.api.Service.Serviceimpl.Product_impl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,11 +24,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/products")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class quanlyproductController {
-    @Autowired
-    private Product_impl productService;
-    @Autowired
-    private Category_impl categoryImpl;
+    private final Product_impl productService;
+    private final Category_impl categoryImpl;
 
     @PostMapping("/add")
     public ResponseEntity<Product> createProduct( @RequestParam("title") String title,

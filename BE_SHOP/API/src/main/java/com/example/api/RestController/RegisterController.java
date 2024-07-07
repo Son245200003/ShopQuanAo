@@ -4,6 +4,7 @@ import com.example.api.Entity.User;
 import com.example.api.Service.Serviceimpl.SmsService;
 import com.example.api.Service.Serviceimpl.User_impl;
 import com.twilio.rest.verify.v2.service.Verification;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,11 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @Slf4j
+@RequiredArgsConstructor
 public class RegisterController {
-    @Autowired
-    SmsService smsService;
-    @Autowired
-    User_impl userImpl;
+    private final SmsService smsService;
+    private final User_impl userImpl;
     String phone;
     @PostMapping("/api/sendOtp")
     public String send(@RequestBody String sdt){

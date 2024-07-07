@@ -3,6 +3,7 @@ package com.example.api.RestController;
 import com.example.api.Entity.Order;
 import com.example.api.Entity.User;
 import com.example.api.Service.Order_Serivce;
+import lombok.RequiredArgsConstructor;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,10 +23,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api-orders")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class OrderController {
 
-    @Autowired
-    private Order_Serivce orderSerivce;
+    private final Order_Serivce orderSerivce;
     @GetMapping("/admin")
     public List<Order> getAllAdmin(){
         return orderSerivce.findAll();

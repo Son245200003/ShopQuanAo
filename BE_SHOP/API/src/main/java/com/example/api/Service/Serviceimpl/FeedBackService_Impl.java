@@ -10,8 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class FeedBackService_Impl implements FeedBackService {
-    @Autowired
+    final
     FeedBack_Repository feedBackRepository;
+    @Autowired
+
+    public FeedBackService_Impl(FeedBack_Repository feedBackRepository) {
+        this.feedBackRepository = feedBackRepository;
+    }
+
     @Override
     public FeedBack addFeedBack(FeedBack feedBack) {
         return feedBackRepository.save(feedBack);

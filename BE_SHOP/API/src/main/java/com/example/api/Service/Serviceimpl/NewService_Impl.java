@@ -12,8 +12,13 @@ import java.util.Optional;
 
 @Service
 public class NewService_Impl implements com.example.api.Service.NewService {
+    private final New_Repository newRepository;
     @Autowired
-    private New_Repository newRepository;
+
+    public NewService_Impl(New_Repository newRepository) {
+        this.newRepository = newRepository;
+    }
+
     @Override
     public New addNew(New n) {
         return newRepository.save(n);

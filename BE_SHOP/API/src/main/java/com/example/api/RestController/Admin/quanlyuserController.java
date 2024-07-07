@@ -3,6 +3,7 @@ package com.example.api.RestController.Admin;
 import com.example.api.Entity.Role;
 import com.example.api.Entity.User;
 import com.example.api.Service.Serviceimpl.User_impl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,9 +22,9 @@ import java.util.Set;
 @RestController
 @Slf4j
 @RequestMapping("/admin/users")
+@RequiredArgsConstructor
 public class quanlyuserController {
-    @Autowired
-    User_impl userservice;
+private final     User_impl userservice;
     //hien thi phan trang
     @GetMapping("/listusers")
     @PreAuthorize("hasRole('ADMIN')")

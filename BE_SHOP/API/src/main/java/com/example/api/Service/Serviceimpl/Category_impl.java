@@ -11,8 +11,12 @@ import java.util.Optional;
 
 @Service
 public class Category_impl implements Category_Service {
-    @Autowired
+    final
     Category_Reponsitory category_reponsitory;
+@Autowired
+    public Category_impl(Category_Reponsitory category_reponsitory) {
+        this.category_reponsitory = category_reponsitory;
+    }
 
     @Override
     public ArrayList<Category> getALL() {

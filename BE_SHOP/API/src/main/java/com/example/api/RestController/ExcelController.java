@@ -2,6 +2,7 @@ package com.example.api.RestController;
 
 import com.example.api.Service.Serviceimpl.ReportService;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,9 @@ import java.io.IOException;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class ExcelController {
-    @Autowired
-    private ReportService reportService;
+    private final ReportService reportService;
     @GetMapping("/excel")
     public void generateExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");

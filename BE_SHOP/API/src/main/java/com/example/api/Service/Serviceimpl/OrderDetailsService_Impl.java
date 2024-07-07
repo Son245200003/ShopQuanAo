@@ -11,8 +11,14 @@ import java.util.List;
 
 @Service
 public class OrderDetailsService_Impl implements OrderDetails_Service {
-    @Autowired
+    final
     OrderDetails_Repository orderDetailsRepository;
+    @Autowired
+
+    public OrderDetailsService_Impl(OrderDetails_Repository orderDetailsRepository) {
+        this.orderDetailsRepository = orderDetailsRepository;
+    }
+
     @Override
     public List<OrderDetail> findById(Order order) {
         return orderDetailsRepository.findAllByOrderId(order);

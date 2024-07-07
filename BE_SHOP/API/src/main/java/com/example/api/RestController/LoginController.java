@@ -6,6 +6,7 @@ import com.example.api.Model.LoginRequest;
 import com.example.api.Service.Serviceimpl.JwtService;
 import com.example.api.Service.Serviceimpl.SmsService;
 import com.example.api.Service.Serviceimpl.User_impl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,15 +23,12 @@ import java.security.Principal;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class LoginController {
-    @Autowired
-    AuthenticationManager authenticationManager;
-    @Autowired
-    JwtService jwtService;
-    @Autowired
-    User_impl userImpl;
-    @Autowired
-    SmsService smsService;
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
+    private final User_impl userImpl;
+    private final SmsService smsService;
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest ) {
         try {

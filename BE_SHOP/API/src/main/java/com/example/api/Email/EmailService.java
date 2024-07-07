@@ -14,11 +14,14 @@ import java.util.List;
 @Service
 public class EmailService {
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
 
-    @Autowired
-    private Order_Serivce orderSerivce;
+    private final Order_Serivce orderService;
+@Autowired
+    public EmailService(JavaMailSender javaMailSender, Order_Serivce orderService) {
+        this.javaMailSender = javaMailSender;
+        this.orderService = orderService;
+    }
 
     public void sendMail(Email email) {
         MimeMessage message = javaMailSender.createMimeMessage();
@@ -29,7 +32,7 @@ public class EmailService {
             helper.setSubject(email.getSubject());
 
             // Lấy danh sách đơn hàng từ orderService
-            List<Order> orders = orderSerivce.findAll();
+            List<Order> orders = orderService.findAll();
             int totalOrders = orders.size();
             double totalMoney = 0;
             for (Order order : orders) {

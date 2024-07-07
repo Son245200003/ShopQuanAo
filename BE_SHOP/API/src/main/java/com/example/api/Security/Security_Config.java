@@ -24,8 +24,13 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableWebSecurity
 public class Security_Config {
-    @Autowired
+    final
     JwtAuthenticationFilter jwtAuthenticationFilter;
+@Autowired
+    public Security_Config(JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
+
     @Bean
     BCryptPasswordEncoder passwordEncoder(){
         return   new BCryptPasswordEncoder();

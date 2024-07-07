@@ -2,6 +2,7 @@ package com.example.api.RestController;
 
 import com.example.api.Service.Serviceimpl.JwtService;
 import com.example.api.Service.Serviceimpl.UserServiceimp;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 //sử dụng class này để linh hoạt trong việc kiểm tra jwt bên phía client
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class VerifyJwt {
-    @Autowired
-    private JwtService jwtService;
+    private final JwtService jwtService;
 
-    @Autowired
-    private UserServiceimp userServiceimp;
+    private final UserServiceimp userServiceimp;
 
     @PostMapping("/verifyToken")
     public ResponseEntity<?> verifyToken(@RequestHeader("Authorization") String authorizationHeader) {

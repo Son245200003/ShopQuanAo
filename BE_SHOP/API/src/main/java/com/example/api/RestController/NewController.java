@@ -4,6 +4,7 @@ import com.example.api.Entity.New;
 import com.example.api.Entity.User;
 import com.example.api.Service.NewService;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,9 +22,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api-new")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class NewController {
-    @Autowired
-    private NewService newService;
+    private final NewService newService;
     @GetMapping("")
     public List<New> NewView(){
         List<New> newEntities = newService.findAllNew();

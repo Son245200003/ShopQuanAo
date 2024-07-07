@@ -25,16 +25,20 @@ import java.util.Optional;
 public class CartService_Impl implements Cart_Service {
 
 
-    @Autowired
-    private Product_Reponsitory productRepository;
+    private final Product_Reponsitory productRepository;
 
-    @Autowired
-    private Cart_Repository cartRepository;
+    private final Cart_Repository cartRepository;
 
-    @Autowired
-    private CartItem_Repository cartItemRepository;
-    @Autowired
-    private User_Reponsitory userReponsitory;
+    private final CartItem_Repository cartItemRepository;
+    private final User_Reponsitory userReponsitory;
+@Autowired
+    public CartService_Impl(Product_Reponsitory productRepository, Cart_Repository cartRepository, CartItem_Repository cartItemRepository, User_Reponsitory userReponsitory) {
+        this.productRepository = productRepository;
+        this.cartRepository = cartRepository;
+        this.cartItemRepository = cartItemRepository;
+        this.userReponsitory = userReponsitory;
+    }
+
     public List<CartItem> getCartByUser( User user) {
 
         Cart cart=cartRepository.findCartByIdUser(user);

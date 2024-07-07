@@ -5,6 +5,7 @@ import com.example.api.Reponsitory.*;
 import com.example.api.Service.Cart_Service;
 import com.example.api.Service.Order_Serivce;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,19 +16,14 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService_Impl implements Order_Serivce {
-    @Autowired
-    Order_Repository orderRepository;
-    @Autowired
-    CartItem_Repository cartItemRepository;
-    @Autowired
-    Cart_Service cartService;
-    @Autowired
-    User_Reponsitory userReponsitory;
-    @Autowired
-    OrderDetails_Repository orderDetailsRepository;
-    @Autowired
-    Cart_Repository cartRepository;
+    private final Order_Repository orderRepository;
+    private final CartItem_Repository cartItemRepository;
+    private final Cart_Service cartService;
+    private final User_Reponsitory userReponsitory;
+    private final OrderDetails_Repository orderDetailsRepository;
+    private final Cart_Repository cartRepository;
 
     @Override
     public List<Order> findAll() {

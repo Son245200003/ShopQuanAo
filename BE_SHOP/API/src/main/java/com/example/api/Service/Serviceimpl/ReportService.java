@@ -4,6 +4,7 @@ import com.example.api.Entity.Order;
 import com.example.api.Reponsitory.Order_Repository;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -14,9 +15,9 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ReportService {
-    @Autowired
-    private Order_Repository orderRepository;
+    private final Order_Repository orderRepository;
     public void generateExcel(HttpServletResponse response) throws IOException {
         List<Order> orders=orderRepository.findAll();
         HSSFWorkbook hssfWorkBook=new HSSFWorkbook();

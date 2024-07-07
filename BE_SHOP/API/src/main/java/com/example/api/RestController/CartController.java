@@ -11,6 +11,7 @@ import com.example.api.Reponsitory.User_Reponsitory;
 
 import com.example.api.Service.Cart_Service;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +27,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api-carts")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class CartController {
-
-    @Autowired
-    private Cart_Service cartService;
+    private final Cart_Service cartService;
     @GetMapping("/getCart")
     public ResponseEntity<List<CartItem>> getCart(@AuthenticationPrincipal User user) {
         return ResponseEntity.ok(cartService.getCartByUser(user));

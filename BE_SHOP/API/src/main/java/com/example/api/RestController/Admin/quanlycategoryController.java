@@ -3,6 +3,7 @@ package com.example.api.RestController.Admin;
 import com.example.api.Entity.Category;
 import com.example.api.Entity.User;
 import com.example.api.Service.Serviceimpl.Category_impl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/admin/category")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class quanlycategoryController {
-    @Autowired
-    Category_impl categoryImpl;
+    private final Category_impl categoryImpl;
     //list ALL
     @GetMapping("")
     public ResponseEntity<ArrayList<Category>> getALl(){

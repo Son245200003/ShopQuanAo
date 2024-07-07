@@ -4,6 +4,7 @@ import com.example.api.Entity.FeedBack;
 import com.example.api.Entity.User;
 import com.example.api.Service.FeedBackService;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api-feedback")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequiredArgsConstructor
 public class FeedBackController {
-    @Autowired
-    private FeedBackService feedBackService;
+    private final FeedBackService feedBackService;
     @GetMapping("")
     public List<FeedBack> findAll(){
         return feedBackService.findAllList();
