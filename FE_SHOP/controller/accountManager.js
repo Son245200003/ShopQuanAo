@@ -17,7 +17,7 @@ if(!admin){
     window.location.href="home.html";
 }
 function fetchUsers(page) {
-    fetch(`http://localhost:8080/admin/users/listusers?page=${page}`,{
+    fetch(`http://192.168.172.128:8080/admin/users/listusers?page=${page}`,{
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -109,7 +109,7 @@ function add() {
     };
 
     // Gửi yêu cầu POST đến endpoint "/adduser"
-    fetch('http://localhost:8080/admin/users/adduser', {
+    fetch('http://192.168.172.128:8080/admin/users/adduser', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -137,7 +137,7 @@ function add() {
 function deleteRow(id) {
     if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
         // Nếu người dùng chấp nhận xóa, thực hiện yêu cầu DELETE
-        fetch(`http://localhost:8080/admin/users/delete/${id}`, {
+        fetch(`http://192.168.172.128:8080/admin/users/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -210,7 +210,7 @@ function updateUser() {
     };
 
     // Gửi yêu cầu PUT để cập nhật thông tin người dùng
-    fetch(`http://localhost:8080/admin/users/update/${userId}`, {
+    fetch(`http://192.168.172.128:8080/admin/users/update/${userId}`, {
         method: 'PUT',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -241,7 +241,7 @@ function searchByUsername() {
     const searchInput = document.getElementById('searchInput').value;
 
     // Gửi yêu cầu GET đến API backend để tìm kiếm theo tên người dùng
-    fetch(`http://localhost:8080/admin/users/search?keyword=${searchInput}`,
+    fetch(`http://192.168.172.128:8080/admin/users/search?keyword=${searchInput}`,
         {
             method: 'GET',
             headers: {

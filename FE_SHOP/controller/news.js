@@ -9,7 +9,7 @@ const jwtToken = localStorage.getItem('jwtToken');
 
 
 function getMunberCart() {
-    fetch('http://localhost:8080/api-carts/getCart', {
+    fetch('http://192.168.172.128:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })
@@ -30,7 +30,7 @@ function getMunberCart() {
 }
 getMunberCart()
 function getdata(){
-    let url = "http://localhost:8080/api-new";
+    let url = "http://192.168.172.128:8080/api-new";
     fetch(url,{
         method: 'GET',
         headers: {

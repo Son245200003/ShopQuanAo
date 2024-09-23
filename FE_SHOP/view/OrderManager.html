@@ -80,7 +80,7 @@
     
         // Hàm để lấy dữ liệu từ API và hiển thị trên trang HTML
         function fetchDataAndDisplay() {
-            var url = `http://localhost:8080/api-orders/page?page=${currentPage}&size=5`;
+            var url = `http://192.168.172.128:8080/api-orders/page?page=${currentPage}&size=5`;
             let stt = 0;
             fetch(url)
                 .then(response => response.json())
@@ -164,7 +164,7 @@
         function deleteOrder(orderId) {
             var confirmDelete = confirm("Bạn có chắc muốn xóa đơn hàng này?");
             if (confirmDelete) {
-                var url = `http://localhost:8080/api-orders/admin/delete/${orderId}`;
+                var url = `http://192.168.172.128:8080/api-orders/admin/delete/${orderId}`;
     
                 fetch(url, {
                     method: 'DELETE'
@@ -190,7 +190,7 @@
 document.getElementById('searchButton').addEventListener('click', function() {
     var keyword = document.getElementById('searchInput').value.trim();
     if (keyword) {
-        var searchUrl = `http://localhost:8080/api-orders/search?keyword=${(keyword)}`;
+        var searchUrl = `http://192.168.172.128:8080/api-orders/search?keyword=${(keyword)}`;
         
         // Gọi API tìm kiếm
         fetch(searchUrl)
@@ -214,7 +214,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
         function updateOrderStatus(orderId) {
             var confirmUpdate = confirm("Bạn có chắc muốn cập nhật trạng thái đơn hàng này?");
             if (confirmUpdate) {
-                var url = `http://localhost:8080/api-orders/admin/update/${orderId}`;
+                var url = `http://192.168.172.128:8080/api-orders/admin/update/${orderId}`;
     
                 // Gửi yêu cầu PUT để cập nhật trạng thái đơn hàng
                 fetch(url, {

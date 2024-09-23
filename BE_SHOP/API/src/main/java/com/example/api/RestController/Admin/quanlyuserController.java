@@ -27,7 +27,6 @@ public class quanlyuserController {
 private final     User_impl userservice;
     //hien thi phan trang
     @GetMapping("/listusers")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Page<User>> getAllUsers(@RequestParam(defaultValue = "0") int page,
                                                   @RequestParam(defaultValue = "7") int size) {
         Pageable pageable = PageRequest.of(page, size);
@@ -37,7 +36,6 @@ private final     User_impl userservice;
 
     // da test thanh cong
     @PostMapping("/adduser")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> add(@RequestBody User user){
         User isxistUser = userservice.findbyUsername(user.getUsername());
         // neu ton tai thong tin trung thi tra ra status 409
@@ -46,14 +44,12 @@ private final     User_impl userservice;
             return ResponseEntity.status(HttpStatus.CONFLICT).body("đã tồn tại Username");
 
         }
-
             return ResponseEntity.status(HttpStatus.OK).body(userservice.save(user));
 
     }
 
     //da test thanh cong
     @GetMapping("/user/{id}")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> getUserById(@PathVariable("id") int id) {
         User user = userservice.findbyId(id);
         if(user!=null){
@@ -64,7 +60,6 @@ private final     User_impl userservice;
     }
     //update da test thanh cong
     @PutMapping("/update/{id}")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody User user) {
         User existingUser = userservice.findbyId(id);
         if (existingUser == null) {
@@ -99,7 +94,6 @@ private final     User_impl userservice;
     }
     //da test thanh cong
     @DeleteMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
 
         User isxistUser = userservice.findbyId(id);
@@ -113,13 +107,11 @@ private final     User_impl userservice;
     }
     //serch
     @GetMapping("/search")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> search(@RequestParam("keyword") String key){
         ArrayList<User> users = userservice.searchbyName(key);
         return ResponseEntity.ok(users);
     }
     @GetMapping("/test")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<?> find(@AuthenticationPrincipal User user){
         if(user!=null){
             return ResponseEntity.ok(userservice.findbyId(user.getId()));

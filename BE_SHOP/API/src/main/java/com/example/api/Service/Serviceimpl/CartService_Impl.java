@@ -10,6 +10,8 @@ import com.example.api.Reponsitory.Product_Reponsitory;
 import com.example.api.Reponsitory.User_Reponsitory;
 import com.example.api.Service.Cart_Service;
 
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -22,6 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CartService_Impl implements Cart_Service {
 
 
@@ -31,13 +34,6 @@ public class CartService_Impl implements Cart_Service {
 
     private final CartItem_Repository cartItemRepository;
     private final User_Reponsitory userReponsitory;
-@Autowired
-    public CartService_Impl(Product_Reponsitory productRepository, Cart_Repository cartRepository, CartItem_Repository cartItemRepository, User_Reponsitory userReponsitory) {
-        this.productRepository = productRepository;
-        this.cartRepository = cartRepository;
-        this.cartItemRepository = cartItemRepository;
-        this.userReponsitory = userReponsitory;
-    }
 
     public List<CartItem> getCartByUser( User user) {
 
@@ -54,6 +50,8 @@ public class CartService_Impl implements Cart_Service {
         }
     }
 
+    @Override
+    @Transactional
     public CartItem addCart(int idProduct,User user,String size){
         Cart cart=cartRepository.findCartByIdUser(user);
         Optional<Product> product=productRepository.findById(idProduct);

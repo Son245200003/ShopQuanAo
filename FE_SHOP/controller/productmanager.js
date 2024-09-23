@@ -43,7 +43,7 @@ function addProduct() {
     formData.append("category",category)
 
     // Gửi POST request đến endpoint /add
-    fetch('http://localhost:8080/products/add', {
+    fetch('http://192.168.172.128:8080/products/add', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -71,7 +71,7 @@ function addProduct() {
 
 
 function fetchProducts(page) {
-    fetch(`http://localhost:8080/products/get/${categoryId}?page=${page}`, { // Sửa đường dẫn URL ở đây
+    fetch(`http://192.168.172.128:8080/products/get/${categoryId}?page=${page}`, { // Sửa đường dẫn URL ở đây
         method: 'GET',
         headers: {
              'Authorization': 'Bearer ' + token,
@@ -169,7 +169,7 @@ function tableSelectRow() {
 function deleteRow(id){
 
    if(confirm("bạn chắc chắn xóa không")){
-       fetch(`http://localhost:8080/products/${id}`, {
+       fetch(`http://192.168.172.128:8080/products/${id}`, {
         method: 'DELETE',
         headers: {
              'Authorization': 'Bearer ' + token,
@@ -240,7 +240,7 @@ function updateProduct() {
 
 function sendUpdateRequest(formData, productid) {
     // Gửi PUT request đến endpoint cập nhật sản phẩm
-    fetch(`http://localhost:8080/products/${productid}`, {
+    fetch(`http://192.168.172.128:8080/products/${productid}`, {
         method: 'PUT',
         headers: {
             'Authorization': 'Bearer ' + token,

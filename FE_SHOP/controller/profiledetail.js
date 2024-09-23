@@ -4,7 +4,7 @@ const jwtToken = localStorage.getItem('jwtToken');
         'Authorization': `Bearer ${jwtToken}`
     };
 function getMunberCart() {
-    fetch('http://localhost:8080/api-carts/getCart', {
+    fetch('http://192.168.172.128:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })
@@ -49,7 +49,7 @@ function checkdata(data){
                 numberphone : inputPhoneNumber.value
             }
             
-            fetch(`http://localhost:8080/admin/users/update/${data.userId.id}`, {
+            fetch(`http://192.168.172.128:8080/admin/users/update/${data.userId.id}`, {
                 method: 'PUT',
                 headers: headers,
                 body: JSON.stringify(data_send)
@@ -78,7 +78,7 @@ function loaddata(){
         'Authorization': `Bearer ${jwtToken}`,
         'Content-Type': 'application/json'
     };
-    fetch('http://localhost:8080/admin/users/test', {
+    fetch('http://192.168.172.128:8080/admin/users/test', {
         method: 'GET',
         headers: headers
     })
@@ -116,7 +116,7 @@ function loaddata(){
             };
             
             let stt=0;
-            fetch('http://localhost:8080/api-orders/user', {
+            fetch('http://192.168.172.128:8080/api-orders/user', {
                 method: 'GET',
                 headers: headers
             })

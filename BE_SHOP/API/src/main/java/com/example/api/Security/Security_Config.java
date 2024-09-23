@@ -52,12 +52,13 @@ public class Security_Config {
         http.csrf(AbstractHttpConfigurer::disable)
 
                 .authorizeHttpRequests(ath->ath
+                        .anyRequest().permitAll()
                         .requestMatchers("/webjars").permitAll()
                         .requestMatchers("/webjars/**", "/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/verifyToken").authenticated()
-                        .requestMatchers("/verifyToken1").hasRole("ADMIN")
-                        . requestMatchers("/api-new/**").hasRole("ADMIN")
+//                        .requestMatchers("/verifyToken1").hasRole("ADMIN")
+//                        . requestMatchers("/api-new/**").hasRole("ADMIN")
 
                       //  .requestMatchers("/admin/users/**").hasRole("ADMIN")
                                .requestMatchers("/admin/category/**").permitAll()

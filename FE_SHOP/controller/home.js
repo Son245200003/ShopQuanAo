@@ -8,7 +8,7 @@ const jwtToken = localStorage.getItem('jwtToken');
 
 
 function getMunberCart() {
-    fetch('http://localhost:8080/api-carts/getCart', {
+    fetch('http://192.168.172.128:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })
@@ -96,7 +96,7 @@ function clickNextSlide(){
 
   
 function getdata(){
-  let url="http://localhost:8080/products/getlimit";
+  let url="http://192.168.172.128:8080/products/getlimit";
   fetch(url).then((Response)=>Response.json())
   .then(Response=>{
       console.log(Response);

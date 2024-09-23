@@ -6,7 +6,7 @@ const jwtToken = localStorage.getItem('jwtToken');
 
 getdata();
 function getMunberCart() {
-  fetch('http://localhost:8080/api-carts/getCart', {
+  fetch('http://192.168.172.128:8080/api-carts/getCart', {
       method: 'GET',
       headers: headers
   })
@@ -56,7 +56,7 @@ document.querySelector("body").onscroll= function(e){
 
 // <== getData
 function getdata(){
-  let url="http://localhost:8080/products/getAll";
+  let url="http://192.168.172.128:8080/products/getAll";
   fetch(url,{
     method: 'GET',
     headers: headers

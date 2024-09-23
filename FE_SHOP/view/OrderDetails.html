@@ -72,7 +72,7 @@ const headers = {
 
 
 function getMunberCart() {
-fetch('http://localhost:8080/api-carts/getCart', {
+fetch('http://192.168.172.128:8080/api-carts/getCart', {
     method: 'GET',
     headers: headers
 })
@@ -92,7 +92,7 @@ fetch('http://localhost:8080/api-carts/getCart', {
 });
 }getMunberCart();
             // Gửi yêu cầu AJAX để lấy danh sách chi tiết đơn hàng từ API
-            var detailsUrl = `http://localhost:8080/api-orders-details/${orderId}`;
+            var detailsUrl = `http://192.168.172.128:8080/api-orders-details/${orderId}`;
             fetch(detailsUrl)
                 .then(response => response.json())
                 .then(data => {

@@ -1,13 +1,13 @@
 let textFeedBack = document.querySelector(".container .content .feed_back .feed_back_content textarea");
 let btnFeedBack = document.querySelector(".container .content .feed_back button");
-let url = "http://localhost:8080/api-feedback/add_feedback";
+let url = "http://192.168.172.128:8080/api-feedback/add_feedback";
 const jwtToken = localStorage.getItem('jwtToken');
 
     const headers = {
         'Authorization': `Bearer ${jwtToken}`
     };
     function getMunberCart() {
-        fetch('http://localhost:8080/api-carts/getCart', {
+        fetch('http://192.168.172.128:8080/api-carts/getCart', {
             method: 'GET',
             headers: headers
         })
