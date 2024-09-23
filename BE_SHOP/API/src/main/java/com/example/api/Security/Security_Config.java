@@ -57,10 +57,7 @@ public class Security_Config {
                         .requestMatchers("/webjars/**", "/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/verifyToken").authenticated()
-//                        .requestMatchers("/verifyToken1").hasRole("ADMIN")
-//                        . requestMatchers("/api-new/**").hasRole("ADMIN")
 
-                      //  .requestMatchers("/admin/users/**").hasRole("ADMIN")
                                .requestMatchers("/admin/category/**").permitAll()
 
                         .anyRequest().permitAll())
