@@ -52,7 +52,6 @@ public class Security_Config {
         http.csrf(AbstractHttpConfigurer::disable)
 
                 .authorizeHttpRequests(ath->ath
-                        .anyRequest().permitAll()
                         .requestMatchers("/webjars").permitAll()
                         .requestMatchers("/webjars/**", "/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/login").permitAll()
