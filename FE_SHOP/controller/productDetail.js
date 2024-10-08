@@ -14,7 +14,7 @@ const jwtToken = localStorage.getItem('jwtToken');
 
 
 function getMunberCart() {
-    fetch('http://192.168.172.128:8080/api-carts/getCart', {
+    fetch('http://192.168.172.130:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })
@@ -35,7 +35,7 @@ function getMunberCart() {
 }
 getMunberCart()
 function getdata(){
-    let url = `http://192.168.172.128:8080/products/${params.get("id")}`;
+    let url = `http://192.168.172.130:8080/products/${params.get("id")}`;
     fetch(url)
         .then((res) => res.json())
         .then((res) => {
@@ -70,7 +70,7 @@ function addToCart() {
     const size = selectedSize.value;
     
     // Tạo yêu cầu POST đến endpoint "/addCart/{idProduct}"
-    fetch(`http://192.168.172.128:8080/api-carts/addCart/${params.get("id")}?size=${size}`, {
+    fetch(`http://192.168.172.130:8080/api-carts/addCart/${params.get("id")}?size=${size}`, {
       method: 'POST',
       headers: headers
       // Không cần body vì dữ liệu đã được truyền qua URL
@@ -190,7 +190,7 @@ btnBuy.onclick=()=>{
               },
             body: JSON.stringify(data)
         }
-            let url ="http://192.168.172.128:3000/carts"
+            let url ="http://192.168.172.130:3000/carts"
             fetch(url,option).then((Response)=>{Response.json()}).then((Response)=>{ window.location.assign("pay.html");})
     
 
@@ -226,7 +226,7 @@ btnBuy.onclick=()=>{
               },
             body: JSON.stringify(data)
         }
-            let url ="http://192.168.172.128:3000/carts"
+            let url ="http://192.168.172.130:3000/carts"
             fetch(url,option).then((Response)=>{Response.json()}).then((Response)=>{console.log(Response);})
     
 

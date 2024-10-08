@@ -26,7 +26,7 @@ function addNew() {
     formData.append("content", content);
     formData.append("img", imgFile);
 
-    fetch('http://192.168.172.128:8080/api-new/add_new', {
+    fetch('http://192.168.172.130:8080/api-new/add_new', {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -51,7 +51,7 @@ function addNew() {
         });
 }
 function fetchNews() {
-    fetch('http://192.168.172.128:8080/api-new',{
+    fetch('http://192.168.172.130:8080/api-new',{
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token,
@@ -139,7 +139,7 @@ function updateNews() {
 
 // Gửi yêu cầu PUT đến API để cập nhật tin tức với ID đã chọn
 function sendUpdateRequest(formData, newsId) {
-    fetch(`http://192.168.172.128:8080/api-new/update_new/${newsId}`, {
+    fetch(`http://192.168.172.130:8080/api-new/update_new/${newsId}`, {
         method: 'PUT',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -185,7 +185,7 @@ function tableSelectRow() {
 function deleteRow(newsId) {
     if(confirm("bạn có chắc xóa không?")){
     // Gửi yêu cầu DELETE đến API để xóa tin tức với ID đã cho
-    fetch(`http://192.168.172.128:8080/api-new/${newsId}`, {
+    fetch(`http://192.168.172.130:8080/api-new/${newsId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -209,7 +209,7 @@ function deleteRow(newsId) {
 function searchNews() {
     const searchInput = document.getElementById('searchInput').value;
     // Gửi yêu cầu GET đến API để tìm kiếm tin tức dựa trên từ khóa
-    fetch(`http://192.168.172.128:8080/api-new/search?keyword=${searchInput}`, {
+    fetch(`http://192.168.172.130:8080/api-new/search?keyword=${searchInput}`, {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token,

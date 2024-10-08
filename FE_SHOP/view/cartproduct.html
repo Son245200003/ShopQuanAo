@@ -116,7 +116,7 @@
         }
 
         function fetchCartData(headers) {
-            fetch('http://192.168.172.128:8080/api-carts/getCart', {
+            fetch('http://192.168.172.130:8080/api-carts/getCart', {
                 method: 'GET',
                 headers: headers
             })
@@ -147,7 +147,7 @@
                     const row = button.closest('tr');
                     const productId = row.dataset.productId;
                     const size = row.dataset.size;
-                    fetch(`http://192.168.172.128:8080/api-carts/decrease/${productId}?size=${size}`, {
+                    fetch(`http://192.168.172.130:8080/api-carts/decrease/${productId}?size=${size}`, {
                         method: 'PUT',
                         headers: headers
                     })
@@ -169,7 +169,7 @@
                     const productId = row.dataset.productId;
                     const size = row.dataset.size;
                     console.log(size)
-                    fetch(`http://192.168.172.128:8080/api-carts/increase/${productId}?size=${size}`, {
+                    fetch(`http://192.168.172.130:8080/api-carts/increase/${productId}?size=${size}`, {
                         method: 'PUT',
                         headers: headers
                     })
@@ -242,7 +242,7 @@
         }
 
         function deleteCartItem(itemId, headers) {
-            fetch(`http://192.168.172.128:8080/api-carts/remove/${itemId}`, {
+            fetch(`http://192.168.172.130:8080/api-carts/remove/${itemId}`, {
                 method: 'DELETE',
                 headers: headers
             })
@@ -278,7 +278,7 @@
 
 
 function getMunberCart() {
-    fetch('http://192.168.172.128:8080/api-carts/getCart', {
+    fetch('http://192.168.172.130:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })

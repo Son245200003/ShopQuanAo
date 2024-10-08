@@ -17,7 +17,7 @@ function MoneytoInt(x){
     return parseInt(x.replaceAll(".",""))
 }
 function getdatabill(headers){
-    fetch('http://192.168.172.128:8080/api-carts/getCart', {
+    fetch('http://192.168.172.130:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })
@@ -64,7 +64,7 @@ function renderdatabill(datas){
 
 
 function renderdatainfo(headers){
-    fetch('http://192.168.172.128:8080/admin/users/test', {
+    fetch('http://192.168.172.130:8080/admin/users/test', {
         method: 'GET',
         headers: headers
     })
@@ -92,7 +92,7 @@ function renderdatainfo(headers){
 renderdatainfo()
 
 function addOrder(order, headers) {
-    fetch('http://192.168.172.128:8080/api-orders/addOrder', {
+    fetch('http://192.168.172.130:8080/api-orders/addOrder', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(order)
@@ -117,7 +117,7 @@ function addOrder(order, headers) {
 
 // Hàm để lấy thông tin đơn hàng từ backend
 function getOrderInfo(headers) {
-    return fetch('http://192.168.172.128:8080/api-carts/getCart', {
+    return fetch('http://192.168.172.130:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })
@@ -135,7 +135,7 @@ function getOrderInfo(headers) {
 
 // Hàm để lấy thông tin người dùng từ backend
 function getUserInfo(headers) {
-    return fetch('http://192.168.172.128:8080/admin/users/test', {
+    return fetch('http://192.168.172.130:8080/admin/users/test', {
         method: 'GET',
         headers: headers
     })

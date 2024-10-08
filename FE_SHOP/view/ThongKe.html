@@ -87,7 +87,7 @@
             var beginDate = document.getElementById("beginDate").value;
             var endDate = document.getElementById("endDate").value;
             // Gửi yêu cầu fetch đến API
-            fetch(`http://192.168.172.128:8080/api-orders/satistic?begin=${beginDate}&end=${endDate}`)
+            fetch(`http://192.168.172.130:8080/api-orders/satistic?begin=${beginDate}&end=${endDate}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -153,7 +153,7 @@
         }
         document.getElementById("ExportExcel").addEventListener("click", function() {
            // Tạo một yêu cầu GET đến đường dẫn '/excel' của backend
-            fetch('http://192.168.172.128:8080/excel', {
+            fetch('http://192.168.172.130:8080/excel', {
                 method: 'GET'
             })
             .then(response => {
@@ -181,7 +181,7 @@
             .catch(error => console.error('Error downloading Excel file:', error));});
 
         document.getElementById("allOrdersBtn").addEventListener("click", function() {
-            fetch('http://192.168.172.128:8080/api-orders/admin')
+            fetch('http://192.168.172.130:8080/api-orders/admin')
             .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -236,7 +236,7 @@
             var recipientEmail = document.getElementById("recipientEmail").value;
             
             // Gửi yêu cầu fetch đến API để gửi email
-            fetch('http://192.168.172.128:8080/send-email', {
+            fetch('http://192.168.172.130:8080/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

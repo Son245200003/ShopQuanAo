@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             password: password
         };
 
-        fetch('http://192.168.172.128:8080/login', {
+        fetch('http://192.168.172.130:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

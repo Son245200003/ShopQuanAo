@@ -6,7 +6,7 @@ if(!admin){
 let idfeedback = null;
 
 function fetchFeedback() {
-    fetch('http://192.168.172.128:8080/api-feedback')
+    fetch('http://192.168.172.130:8080/api-feedback')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -84,7 +84,7 @@ function addFeedback() {
         subjectName: subject,
         note:note
     };
-    fetch('http://192.168.172.128:8080/api-feedback/add_feedback', {
+    fetch('http://192.168.172.130:8080/api-feedback/add_feedback', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ function addFeedback() {
 function deleteFeedback(id) {
    if(confirm("bạn chắc xóa không?")){
 
-  fetch(`http://192.168.172.128:8080/api-feedback/delete/${id}`, {
+  fetch(`http://192.168.172.130:8080/api-feedback/delete/${id}`, {
         method: 'DELETE',
     })
         .then(response => {
@@ -141,7 +141,7 @@ function updateFeedback() {
         subjectName: subject,
         note: note
     };
-        fetch(`http://192.168.172.128:8080/api-feedback/update_feedback/${feedbackid}`, {
+        fetch(`http://192.168.172.130:8080/api-feedback/update_feedback/${feedbackid}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ function updateFeedback() {
 //tim kiem
 function searchFeedback() {
     const searchInput = document.getElementById('searchInput').value;
-    fetch(`http://192.168.172.128:8080/api-feedback/search?keyword=${searchInput}`,
+    fetch(`http://192.168.172.130:8080/api-feedback/search?keyword=${searchInput}`,
         {
             method: 'GET',
             headers: {

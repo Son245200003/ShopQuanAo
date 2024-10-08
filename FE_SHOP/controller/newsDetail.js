@@ -11,7 +11,7 @@ const jwtToken = localStorage.getItem('jwtToken');
         'Authorization': `Bearer ${jwtToken}`
     };
 function getdata(){
-    let url=`http://192.168.172.128:8080/api-new/${Id}`
+    let url=`http://192.168.172.130:8080/api-new/${Id}`
     fetch(url,{
         method: 'GET',
         headers: {
@@ -28,7 +28,7 @@ function getdata(){
 function base64ToImageUrl(base64String) {
     return 'data:image/jpeg;base64,' + base64String;}
     function getMunberCart() {
-        fetch('http://192.168.172.128:8080/api-carts/getCart', {
+        fetch('http://192.168.172.130:8080/api-carts/getCart', {
             method: 'GET',
             headers: headers
         })

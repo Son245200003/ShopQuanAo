@@ -16,7 +16,7 @@ if(!admin){
     window.location.href="home.html";
 }
 function getCategories() {
-    fetch('http://192.168.172.128:8080/admin/category',
+    fetch('http://192.168.172.130:8080/admin/category',
         {
             method: 'GET',
             headers: {
@@ -76,7 +76,7 @@ function tableSelectRow() {
 // Hàm xóa danh mục
 function deleteCategory(id) {
     if(confirm("Bạn có chắc muốn xóa không")){
-    fetch(`http://192.168.172.128:8080/admin/category/delete/${id}`, {
+    fetch(`http://192.168.172.130:8080/admin/category/delete/${id}`, {
         method: 'DELETE',
         headers: {
                 'Authorization': 'Bearer ' + token,
@@ -106,7 +106,7 @@ function addCategory() {
     };
 
     // Gửi yêu cầu POST đến endpoint
-    fetch('http://192.168.172.128:8080/admin/category/add', {
+    fetch('http://192.168.172.130:8080/admin/category/add', {
         method: 'POST',
         headers: {
               'Authorization': 'Bearer ' + token,
@@ -139,7 +139,7 @@ function updateCategory() {
     };
 
     // Gửi yêu cầu PUT đến endpoint
-    fetch(`http://192.168.172.128:8080/admin/category/update/${categoryId}`, {
+    fetch(`http://192.168.172.130:8080/admin/category/update/${categoryId}`, {
         method: 'PUT',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -162,7 +162,7 @@ function searchByUsername() {
     const searchInput = document.getElementById('searchInput').value;
 
     // Gửi yêu cầu GET đến API backend để tìm kiếm theo tên người dùng
-    fetch(`http://192.168.172.128:8080/admin/category/search?keyword=${searchInput}`,
+    fetch(`http://192.168.172.130:8080/admin/category/search?keyword=${searchInput}`,
         {
             method: 'GET',
             headers: {

@@ -13,7 +13,7 @@ import java.util.Date;
 @Slf4j
 public class JwtService {
 private final SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    private final long jwtExpiration= 5000000000000000000L;//time het han token
+    private final long jwtExpiration= 60*60*24*30;//time het han token
 
  //tao token
 
@@ -21,7 +21,7 @@ public  String generationtoken(User user){
     return Jwts.builder()
             .setSubject(user.getUsername())
             .setIssuedAt(new Date())
-            .setExpiration(new Date((new Date()).getTime()+ jwtExpiration))
+            .setExpiration(new Date((new Date()).getTime()+ jwtExpiration *1000L))
             .signWith(secretKey)
             .compact();
 }

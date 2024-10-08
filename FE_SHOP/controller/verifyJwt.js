@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const jwtToken = localStorage.getItem('jwtToken');
     if (jwtToken) {
         // Gửi yêu cầu đến máy chủ BE để xác thực JWT và lấy thông tin người dùng
-        fetch('http://192.168.172.128:8080/verifyToken', {
+        fetch('http://192.168.172.130:8080/verifyToken', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

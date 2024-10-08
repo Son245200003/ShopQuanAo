@@ -16,7 +16,7 @@ function sendotp() {
         }
 
         // Gửi dữ liệu điện thoại lên máy chủ Spring Boot
-        fetch('http://192.168.172.128:8080/api/sendOtp', {
+        fetch('http://192.168.172.130:8080/api/sendOtp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ function verifyandregister() {
         }
 
         // Gửi dữ liệu đăng ký và mã OTP lên máy chủ
-        fetch('http://192.168.172.128:8080/register/verify?otp=' + verificationCode, {
+        fetch('http://192.168.172.130:8080/register/verify?otp=' + verificationCode, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

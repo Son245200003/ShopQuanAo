@@ -9,7 +9,7 @@ const jwtToken = localStorage.getItem('jwtToken');
         'Authorization': `Bearer ${jwtToken}`
     };
 function getMunberCart() {
-    fetch('http://192.168.172.128:8080/api-carts/getCart', {
+    fetch('http://192.168.172.130:8080/api-carts/getCart', {
         method: 'GET',
         headers: headers
     })
@@ -63,7 +63,7 @@ function addactionbtn(){
 
 
 function getData(){
-    let url ="http://192.168.172.128:8080/carts"
+    let url ="http://192.168.172.130:8080/carts"
     fetch(url).then((Response)=>Response.json())
     .then(async Response=>{await loadData(Response);})
 
@@ -113,7 +113,7 @@ addactionbtnClose()
 
 
  let addactionbtnClose =()=>{
-    let url ="http://192.168.172.128:8080/carts"
+    let url ="http://192.168.172.130:8080/carts"
     let button_closes= document.querySelectorAll(".bill .table-bill tr td button.close");
     let option={
         method: 'DELETE',
